@@ -1,5 +1,5 @@
-import { style } from '@angular/animations';
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
+
 
 @Component({
     templateUrl: 'header.component.html',
@@ -8,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+    @Output() featureSelected = new EventEmitter<string>();
+
+    onSelected(feature: string) {
+        this.featureSelected.emit(feature);
+    }
 }

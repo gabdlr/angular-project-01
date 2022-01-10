@@ -1,1 +1,28 @@
+<div class="row">
+    <ul class="col list-group my-3">
+        <li    
+            *ngFor="let recipe of recipes" 
+            class=" list-group-item list-group-item-action "
+        >
+            <div class="row">
+                <div class="col-md-8">
+                    <h4 class="list-group-item-heading">{{recipe.name}}</h4>
+                    <p class="list-group-item-text">{{recipe.description}}</p>
+                </div>
+                <div class="col-md-4">
+                        <img 
+                            [src]="recipe.imagePath" 
+                            alt="{{recipe.name}}" 
+                            class="img-fluid"
+                        >
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="row">
+    <div class="col ps-0">
+        <div class="btn btn-success mb-3">New Recipe</div>
+    </div>
+</div>
 <app-recipe-item></app-recipe-item>
