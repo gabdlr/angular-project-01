@@ -1,1 +1,15 @@
-<p>recipe-item works!</p>
+<li class=" list-group-item list-group-item-action" routerLinkActive="active">
+    <div class="row" style="cursor: pointer;" [routerLink]="[index]">
+        <div class="col-md-8 ">
+            <h4 class="list-group-item-heading">{{recipe.name}}</h4>
+            <p class="list-group-item-text">{{recipe.description}}</p>
+        </div>
+        <div class="col-md-4">
+                <img 
+                    [src]="recipe.imagePath" 
+                    alt="{{recipe.name}}" 
+                    class="img-fluid"
+                >
+        </div>
+    </div>
+</li>

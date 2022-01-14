@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 
 
 @Component({
@@ -8,9 +8,13 @@ import { Component, Output, EventEmitter } from '@angular/core';
 })
 export class HeaderComponent {
 
-    @Output() featureSelected = new EventEmitter<string>();
+    toggleList = false;
+    smallScreenMenu = false;
 
-    onSelected(feature: string) {
-        this.featureSelected.emit(feature);
+    openToggleList() {
+        this.toggleList = !this.toggleList;
+    }
+    displaySmallScreenMenu() {
+        this.smallScreenMenu  = !this.smallScreenMenu;
     }
 }
