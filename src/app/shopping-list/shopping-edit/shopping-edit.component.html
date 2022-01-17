@@ -1,44 +1,60 @@
 <div class="row">
     <div class="col">
-        <form>
+        <form (ngSubmit)="onSubmit(form)" #form="ngForm">
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <div class="mb-3">
                         <label for="ingredientName" class="form-label">Ingredient</label>
                         <input 
+                            name="name"
                             type="text" 
                             class="form-control" 
                             id="ingredientName" 
                             placeholder="Name of the ingredient"
-                            #nameInput
+                            ngModel
+                            required
                         >
                       </div>
                 </div>
                 <div class="col-sm-2">
                     <div class="mb-3">
                         <label for="amount" class="form-label">Amount</label>
-                        <input 
+                        <input
+                            name="amount" 
                             type="number" 
                             class="form-control" 
                             id="amount" 
                             placeholder="Qty."
-                            #amountInput
+                            pattern="^[1-9]+[0-9]*$"
+                            ngModel
+                            required
                         >
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col">
+                    <button 
+                        class="btn btn-success me-1" 
+                        type="submit"
+                        [disabled]="!form.valid"
+                        >{{ editMode ? 'Update' : 'Add' }}
+                    </button>
+                    <button 
+                        class="btn btn-danger me-1" 
+                        type="button"
+                        [disabled]="!editMode"
+                        (click)="onDelete()"
+                        >Delete
+                    </button>
+                    <button 
+                        class="btn btn-primary" 
+                        type="button"
+                        (click)="onClear()"
+                        >Clear
+                    </button>
+                </div>
+            </div>
         </form>
-    </div>
-</div>
-<div class="row">
-    <div class="col">
-        <button 
-            class="btn btn-success me-1" 
-            type="submit"
-            (click)="onAddItem()"
-            >Add
-        </button>
-        <button class="btn btn-danger me-1" type="button">Delete</button>
-        <button class="btn btn-primary" type="button">Clear</button>
     </div>
 </div>

@@ -24,4 +24,7 @@ export class ShoppingListComponent implements OnInit {
     this.igChangeSub.unsubscribe();
   }
 
+  onEditItem(index: number){
+    this.slService.startedEditing.next(index);
+  }
 }
