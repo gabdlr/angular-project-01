@@ -7,18 +7,24 @@
       <div class="collapse navbar-collapse w-100" [ngStyle]="smallScreenMenu ? {display: 'block'} : ''" id="navbarNav">
         <ul class="navbar-nav w-100">
           <li class="nav-item">
-            <a class="nav-link" routerLinkActive="active" aria-current="page" routerLink="/recipes">Recipes</a>
+            <a class="nav-link" routerLinkActive="active" routerLink="/auth" *ngIf="!isAuthenticated">Authenticate</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" aria-current="page" routerLink="/recipes" *ngIf="isAuthenticated">Recipes</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLinkActive="active" routerLink="/shopping-list">Shopping List</a>
           </li>
-          <li class="nav-item dropdown ms-lg-auto">
+          <li class="nav-item">
+            <a class="nav-link" style="cursor: pointer;" *ngIf="isAuthenticated" (click)="onLogout()"> Logout</a>
+          </li>
+          <li class="nav-item dropdown ms-lg-auto" *ngIf="isAuthenticated">
             <a appDropdown (click)="openToggleList()" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Manage
             </a>
             <ul class="dropdown-menu dropmenu-fix" aria-labelledby="navbarDropdown" [ngClass]="toggleList ? 'gabi_fix show' : ''">
-              <li><a class="dropdown-item">Save Data</a></li>
-              <li><a class="dropdown-item">Fetch Data</a></li>
+              <li><a class="dropdown-item" (click)="onSaveData()">Save Data</a></li>
+              <li><a class="dropdown-item" (click)="onFetchData()">Fetch Data</a></li>
             </ul>
           </li>
         </ul>
